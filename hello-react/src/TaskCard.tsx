@@ -1,5 +1,14 @@
 import './TaskCard.css';
-const TaskCard = (props) =>{
+
+interface TaskCardProps {
+  title: string;
+  dueDate?: string;
+  completeAtDate?: string; 
+  assigneeName: string;
+}
+
+
+const TaskCard = (props:TaskCardProps) =>{
 
     if(props.dueDate){
         return (
