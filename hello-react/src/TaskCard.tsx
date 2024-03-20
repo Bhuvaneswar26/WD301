@@ -1,14 +1,14 @@
 import './TaskCard.css';
 
-interface TaskCardProps {
+interface TCProps {
   title: string;
-  dueDate?: string;
-  completeAtDate?: string; 
+  dueDate: string;
+  completeAtDate: string; 
   assigneeName: string;
 }
 
 
-const TaskCard = (props:TaskCardProps) =>{
+const TaskCard = (props:TCProps) =>{
 
     if(props.dueDate){
         return (
