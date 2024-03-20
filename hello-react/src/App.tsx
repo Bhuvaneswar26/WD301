@@ -11,8 +11,8 @@ function App() {
       </div>
       <div className="w-1/2 p-4">
         <h1 className="text-lg font-bold mb-4">Done</h1>
-        <TaskCard title="Build the website using static conntet3" completeAtDate="10th April" assigneeName="3" />
-        <TaskCard title="Build the website using static conntet4" completeAtDate="20th April" assigneeName="4" />
+        <TaskCard title="Build the website using static conntet3" completedAtDate="10th April" assigneeName="3" />
+        <TaskCard title="Build the website using static conntet4" completedAtDate="20th April" assigneeName="4" />
       </div>
     </div>
   )
