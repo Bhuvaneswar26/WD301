@@ -32,11 +32,11 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "tasks",
+        path: "tasks", 
         element: <TaskListPage />,
       },
       {
-        path: "tasks/:id",
+        path: "tasks/:id", 
         element: <TaskDetailsPage />,
       },
     ],
