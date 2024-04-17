@@ -11,7 +11,7 @@ interface TaskDetailsPageParams extends Record<string, string> {
 const TaskDetailsPage: React.FC = () => {
   const { id } = useParams<TaskDetailsPageParams>();
   const [tasks] = useLocalStorage<TaskItem[]>("tasks", []);
-    
+
   
   const task = tasks.find(task => task.uniid === id);
 
@@ -26,4 +26,4 @@ const TaskDetailsPage: React.FC = () => {
   );
 };
 
-export default TaskDetailsPage;
+export default TaskDetailsPage; 
