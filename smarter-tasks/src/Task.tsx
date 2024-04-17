@@ -10,15 +10,14 @@ interface TaskProp {
 
 const Task = (props: TaskProp) => {
   return (
-    <div className="TaskItem shadow-md border border-slate-100">
-      <h3 className="text-base font-bold my-1">{props.title} ({props.dueDat}) <button className="deleteTaskButton bg-red-500 m-2 rounded-md p-2 hover:bg-red-600" 
+    <div className="TaskItem border border-red-200">
+      <h3 className="text-base font-bold my-2">{props.title} ({props.dueDat}) <button className="deleteTaskButton bg-red-500 m-2 rounded-md p-2 hover:bg-red-600" 
       onClick={() => props.delTask(props.uniid)}>
         Delete Task
       </button>
       </h3>
         {props.desc}
-      <br />
-      <br />
+      <hr />
       
     </div>
   );

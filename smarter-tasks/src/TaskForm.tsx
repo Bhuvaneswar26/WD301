@@ -1,7 +1,7 @@
 import React from "react";
 import { TaskItem } from "./types";
 
-interface TaskFormProps {
+interface TaskFormProp {
   addTask: (task: TaskItem) => void;
 }
 interface TaskFormState {
@@ -11,7 +11,7 @@ interface TaskFormState {
   uniid: string;
 }
 
- const TaskFormFC = (props: TaskFormProps) => {
+ const TaskForm = (props: TaskFormProp) => {
   const [formState, setFormState] = React.useState<TaskFormState>({
     title: "",
     desc: "",
@@ -31,9 +31,9 @@ interface TaskFormState {
 
   const dueDateChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     console.log(`${event.target.value}`);
-    const newId = new Date().toISOString();
-    console.log(`newId: ${newId}`);
-    setFormState({ ...formState, dueDat: event.target.value, uniid: newId});
+    const uniqueId = new Date().toISOString();
+    console.log(`uniqueId: ${uniqueId}`);
+    setFormState({ ...formState, dueDat: event.target.value, uniid: uniqueId});
   }
   
   const addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
@@ -68,5 +68,5 @@ interface TaskFormState {
   );
  };
 
- export default TaskFormFC;
+ export default TaskForm;
  

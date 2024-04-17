@@ -9,19 +9,16 @@ const TaskApp = () => {
 
   const [tasks, setTasks] = useLocalStorage<TaskItem[]>("tasks", []);
 
-  const addTask = (task: TaskItem) => {
-    setTasks((
-      state: TaskItem[]
-    ) => {
-      return [...state, task];
-    });
-  };
 
   const delTask = (taskId: string) => {
     setTasks((state: TaskItem[]) => {
-      return state.filter((task) => task.uniid !== taskId); 
-    });
+      return state.filter((task) => task.uniid !== taskId);});
   }
+
+  const addTask = (task: TaskItem) => {
+    setTasks((state: TaskItem[]) => {return [...state, task];});
+  };
+
 
   useEffect(() => {
     const id =setTimeout(() => {

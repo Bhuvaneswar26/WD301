@@ -1,12 +1,12 @@
 import Task from "./Task";
 import { TaskItem } from "./types";
-interface Props {
+interface Prop {
   tasks: TaskItem[];
   delTask: (id: string) => void;
 }
 
 
-const TaskListFC = (props: Props) => {
+const TaskListFC = (props: Prop) => {
   const list = props.tasks.map((task, idx) => (
     <li>
       <Task key={idx} title={task.title} dueDat={task.dueDat} desc={task.desc} uniid={task.uniid} delTask={props.delTask} />

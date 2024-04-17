@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+
+
 const getStoredValue = <T>(key: string, defaultValue: T): T => {
   const savedItem = localStorage.getItem(key);
   if (savedItem) {
@@ -7,6 +9,7 @@ const getStoredValue = <T>(key: string, defaultValue: T): T => {
   }
   return defaultValue;
 };
+
 
 export const useLocalStorage = <T,>(
   key: string,
