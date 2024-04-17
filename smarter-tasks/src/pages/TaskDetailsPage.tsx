@@ -7,20 +7,13 @@ interface TaskDetailsPageParams extends Record<string, string> {
   id: string;
 }
 
-interface TaskAppState {
-  tasks: TaskItem[];
-}
 
 const TaskDetailsPage: React.FC = () => {
   const { id } = useParams<TaskDetailsPageParams>();
-  const [taskAppState] = useLocalStorage<TaskAppState>(
-    "tasks",
-    {
-      tasks: [],
-    }
-  );
+  const [tasks] = useLocalStorage<TaskItem[]>("tasks", []);
+    
   
-  const task = taskAppState.tasks.find(task => task.uniid === id);
+  const task = tasks.find(task => task.uniid === id);
 
   return (
     <div className="bg-white shadow-md rounded-md p-4 m-8">
