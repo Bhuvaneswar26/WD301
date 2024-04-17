@@ -3,7 +3,7 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/Notfound";
 import HomePage from "./pages/HomePage";
 import TaskListPage from "./pages/TaskListPage";
 import TaskDetailsPage from "./pages/TaskDetailsPage";
