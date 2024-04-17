@@ -1,6 +1,5 @@
-import TaskApp from "./TaskApp";
-
-
+import './App.css';
+import TaskApp from './TaskApp';
 function App() {
   return (
     <div className="App">
@@ -8,5 +7,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

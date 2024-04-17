@@ -1,82 +1,72 @@
 import React from "react";
 import { TaskItem } from "./types";
 
-
 interface TaskFormProps {
-    addTask: (task: TaskItem) => void;
-  }
-
+  addTask: (task: TaskItem) => void;
+}
 interface TaskFormState {
-    title : string;
-    des: string;
-    dueDat: string;
-  }
-
-interface TaskFormState {
+  title : string;
+  desc: string;
+  dueDat: string;
+  uniid: string;
 }
 
-interface TaskFormState {
-    title: string;
+ const TaskFormFC = (props: TaskFormProps) => {
+  const [formState, setFormState] = React.useState<TaskFormState>({
+    title: "",
+    desc: "",
+    dueDat: "",
+    uniid: "",
+  });
+
+  const titleChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    console.log(`${event.target.value}`);
+    setFormState({ ...formState, title: event.target.value });
   }
 
-
-
-class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
-    constructor(props: TaskFormProps) {
-        super(props);
-        this.state = {
-          title: "",
-          dueDat: new Date().toISOString().split("T")[0],
-          des: "",
-        }
-      }
-
-      addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
-        event.preventDefault();
-        const newTask = {
-          title: this.state.title,
-          des: this.state.des,
-          dueDat: this.state.dueDat,
-        };
-        this.props.addTask(newTask);
-        this.setState({ title: "" });
-        this.setState({ des: "" });
-        this.setState({ dueDat: new Date().toISOString().split("T")[0] });
-      };
-
-  titleChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+  const descriptionChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     console.log(`${event.target.value}`);
-    this.setState({ title: event.target.value });
+    setFormState({ ...formState, desc: event.target.value });
+  }
+
+  const dueDateChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    console.log(`${event.target.value}`);
+    const newId = new Date().toISOString();
+    console.log(`newId: ${newId}`);
+    setFormState({ ...formState, dueDat: event.target.value, uniid: newId});
+  }
+  
+  const addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault();
+    console.log(`Submitted the form with`);
+    if (formState.title.length === 0 || formState.dueDat.length === 0) {
+      return;
+    }
+    props.addTask(formState);
+    setFormState({ title: "", desc: "", dueDat: "", uniid: ""});
   };
 
-  desChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    console.log(`${event.target.value}`);
-    this.setState({ des: event.target.value });
-  };
-
-  dueDatChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    console.log(`${event.target.value}`);
-    this.setState({ dueDat: event.target.value });
-  };
-
-
-
-  inputRef = React.createRef<HTMLInputElement>();
-
-
-  render(){
-    return (
-      <form onSubmit={this.addTask}>
-        <input type="text" className="border border-slate-100 p-1" placeholder="Title"
-        value={this.state.title} onChange={this.titleChanged} id="todoTitle" required/>
-        <input type="text" className="border border-slate-100 p-1" placeholder="Description"
-        value={this.state.des} onChange={this.desChanged} id="todoDescription" required />
-        <input type="date" className="border border-slate-100 p-1" placeholder="Due Date"
-        value={this.state.dueDat} onChange={this.dueDatChanged} id="todoDueDate" required />
-        <button type="submit" id="addTaskButton">Add item</button>
+  return (
+    <div className='font-bold text-xl text-red-500 text-center'>
+      Task form
+      <form onSubmit={addTask}>
+        <input type="text" className = "border-2 border-gray-500" id="todoTitle" required
+        placeholder="Title" value={formState.title} onChange={titleChanged}
+        />
+        <input type="text" className = "border-2 border-gray-500" id="todoDescription" required
+        placeholder="Description" value={formState.desc} onChange={descriptionChanged}
+        />
+        <input type="date" className = "border-2 border-gray-500" id="todoDueDate" required
+        placeholder="Due Date" value={formState.dueDat} onChange={dueDateChanged}
+        />
+        <button type="submit" id="addTaskButton"
+        className="bg-blue-500 hover:bg-blue-700 text-white ml-2 font-bold py-1 px-3 rounded">
+          Add item
+        </button>
       </form>
-    )
-  }
+    </div>
+  );
+ };
 
-}
- export default TaskForm;
+ export default TaskFormFC;
+ 
