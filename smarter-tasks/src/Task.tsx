@@ -1,32 +1,28 @@
 import "./TaskCard.css";
-import { TaskItem } from "./types";
+import { Link } from "react-router-dom";
 
-interface TaskProps {
-  item: TaskItem;
-  removeTask: (task: TaskItem) => void;
+interface TaskProp {
+    title : string;
+    desc: string;
+    dueDat: string;
+    uniid: string;
+    delTask: (id: string) => void;
 }
-const Task = (props: TaskProps) => {
-  const { item, removeTask } = props;
+
+const Task = (props: TaskProp) => {
   return (
     <div className="TaskItem shadow-md border border-slate-100">
-      <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-        <div>
-          <a href={`/tasks/${item.uniid || ""}`}>
-            <h2 className="text-base font-bold my-1">{item.title}</h2>
-          </a>
-          <p className="text-sm text-slate-500">{item.dueDat}</p>
-          <p className="text-sm text-slate-500">
-            Description: {item.desc}
-          </p>
-        </div>
-
-        <button className="deleteTaskButton cursor-pointer flex items-center justify-center h-4 w-4 rounded-full my-5 mr-5"
-          onClick={() => removeTask(item)}>
-          X
-        </button>
-      </div>
+      <h3 className="text-base font-bold my-1">{props.title} ({props.dueDat}) <button className="deleteTaskButton bg-red-500 m-2 rounded-md p-2 hover:bg-red-600" 
+      onClick={() => props.delTask(props.uniid)}>
+        Delete Task
+      </button>
+      </h3>
+        {props.desc}
+      <br />
+      <br />
+      
     </div>
   );
-};
+}
 
 export default Task;
