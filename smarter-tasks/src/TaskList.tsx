@@ -6,10 +6,10 @@ interface Prop {
 }
 
 
-const TaskListFC = (props: Prop) => {
+const TaskList = (props: Prop) => {
   const list = props.tasks.map((task, idx) => (
     <li>
-      <Task key={idx} title={task.title} dueDat={task.dueDat} desc={task.desc} uniid={task.uniid} delTask={props.delTask} />
+      <Task key={idx} title={task.title} dueDat={task.dueDat} desc={task.desc} uniid={task.uniid} delTask={(task) => props.delTask(task)} />
     </li>
   ));
   return (
@@ -19,4 +19,4 @@ const TaskListFC = (props: Prop) => {
   );
 }
 
-export default TaskListFC;
+export default TaskList;
