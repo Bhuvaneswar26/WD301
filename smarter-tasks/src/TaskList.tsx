@@ -1,15 +1,15 @@
 import Task from "./Task";
 import { TaskItem } from "./types";
-interface Prop {
+interface Props {
   tasks: TaskItem[];
   delTask: (id: string) => void;
 }
 
 
-const TaskList = (props: Prop) => {
+const TaskListFC = (props: Props) => {
   const list = props.tasks.map((task, idx) => (
     <li>
-      <Task key={idx} title={task.title} dueDat={task.dueDat} desc={task.desc} uniid={task.uniid} delTask={(task) => props.delTask(task)} />
+      <Task key={idx} title={task.title} dueDat={task.dueDat} desc={task.desc} uniid={task.uniid} delTask={props.delTask} />
     </li>
   ));
   return (
@@ -19,4 +19,4 @@ const TaskList = (props: Prop) => {
   );
 }
 
-export default TaskList;
+export default TaskListFC;
