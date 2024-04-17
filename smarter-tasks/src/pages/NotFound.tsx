@@ -9,7 +9,7 @@ const NotFound: React.FC = () => {
             </h1>
             <div className='flex justify-center mt-8'>
                 <button className='bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded' id="backToHomeButton">
-                    <Link to='/home'>Go Back to Home</Link>
+                    <Link to='/home'>Go Back 2 Home</Link>
                 </button>
             </div>
         </div>
