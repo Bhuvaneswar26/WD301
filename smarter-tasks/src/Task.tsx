@@ -14,14 +14,22 @@ interface TaskProp {
 const Task = (props: TaskProp) => {
   return (
     <div className="TaskItem shadow-md border border-slate-100">
-      <h3 className="text-base font-bold my-1"> <Link to={`/tasks/${props.uniid || ""}`}>{props.title}   ({props.dueDat}) </Link> <button className="deleteTaskButton bg-red-500 m-2 rounded-md p-2 hover:bg-red-600" 
-      onClick={() => props.delTask(props.uniid)}>
-        Delete Task
-      </button>
-      </h3>
-        {props.desc}
-      <br />
-      
+      <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+        <div>
+          <a href={`/tasks/${props.uniid || ""}`}>
+            <h2 className="text-base font-bold my-1">{props.title}</h2>
+          </a>
+          <p className="text-sm text-slate-500">{props.dueDat}</p>
+          <p className="text-sm text-slate-500">
+            Description: {props.desc}
+          </p>
+        </div>
+
+        <button className="deleteTaskButton cursor-pointer flex items-center justify-center h-4 w-4 rounded-full my-5 mr-5"
+          onClick={() => {props.delTask(props.uniid)}}>
+          X
+        </button>
+      </div>
     </div>
   );
 }
