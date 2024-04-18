@@ -37,13 +37,6 @@ const SigninForm: React.FC = () => {
 
     navigate('/dashboard');
 
-
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-
-    console.log(userInfo.id); // "1"
-    console.log(userInfo.name); // "Avishek Jana"
-    console.log(userInfo.email); // "avishek@example.com"
-
     } catch (error) {
       console.error('Sign-in failed:', error);
     }
