@@ -29,7 +29,7 @@ const SignupForm: React.FC = () => {
 
       localStorage.setItem('authToken', userInfo.token);
       localStorage.setItem('userData', JSON.stringify(userInfo.user))
-      navigate('/signin');
+      navigate("/account")
       localStorage.setItem('responsemsg', 'Sign up successful. Please sign in.');
       console.log('Sign-up successful');
     } catch (error) {
